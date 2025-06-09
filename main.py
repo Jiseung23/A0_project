@@ -90,3 +90,56 @@ mbti_movies = {
         {"title": "《그래비티》", "img": "https://upload.wikimedia.org/wikipedia/en/f/f6/Gravity_Poster.jpg"},
         {"title": "《타이타닉》", "img": "https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg"}
     ],
+    "ESFJ": [
+        {"title": "《빅 히어로》", "img": "https://upload.wikimedia.org/wikipedia/en/4/4b/Big_Hero_6_%28film%29_poster.jpg"},
+        {"title": "《안드로메다 스트레인》", "img": "https://upload.wikimedia.org/wikipedia/en/f/f9/The_Andromeda_Strain_%281971_film%29.jpg"},
+        {"title": "《컨테이젼》", "img": "https://upload.wikimedia.org/wikipedia/en/b/b0/Contagion_Poster.jpg"}
+    ],
+}
+
+mbti_list = list(mbti_movies.keys())
+selected_mbti = st.session_state.get("selected_mbti", "")
+
+# 버튼 스타일
+cols = st.columns(4)
+for i, mbti in enumerate(mbti_list):
+    with cols[i % 4]:
+        if st.button(mbti, key=mbti):
+            st.session_state.selected_mbti = mbti
+            selected_mbti = mbti
+
+# 결과 출력
+if selected_mbti:
+    st.markdown("---")
+    st.markdown(f"### 🎯 {selected_mbti} 유형을 위한 영화 추천:")
+
+    for movie in mbti_movies[selected_mbti]:
+        st.markdown(f"**🎬 {movie['title']}**")
+        st.image(movie["img"], width=200)
+        st.markdown("")
+
+# 푸터
+st.markdown("---")
+st.markdown("<div style='text-align: center; color: #B48EAE;'>Made with ❤️ using Streamlit</div>", unsafe_allow_html=True)
+
+# 버튼 스타일 CSS
+st.markdown("""
+    <style>
+    div.stButton > button {
+        background-color: #FCE4EC;
+        color: #4A4A4A;
+        border: 2px solid #F8BBD0;
+        border-radius: 12px;
+        padding: 0.5em 1em;
+        margin: 0.2em;
+        font-size: 16px;
+        font-weight: bold;
+        transition: 0.2s ease-in-out;
+    }
+    div.stButton > button:hover {
+        background-color: #F8BBD0;
+        color: white;
+        border-color: #F48FB1;
+    }
+    </style>
+""", unsafe_allow_html=True)
