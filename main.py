@@ -26,7 +26,7 @@ mbti_movies = {
     "INFJ": [
         {"title": "뷰티풀 마인드", "img": "https://upload.wikimedia.org/wikipedia/en/b/b8/A_Beautiful_Mind_Poster.jpg"},
         {"title": "컨택트", "img": "https://i.namu.wiki/i/eau9zbUvBKKIQVU0e_Ag6xa1NijN1FRvoYXnNHSK4DxTCWrw8nRAuj0vbzD4RXUU4YHDWnx9aPj3Rl8ogT62cA.webp"},
-        {"title": "이터널 선샤인", "img": "https://upload.wikimedia.org/wikipedia/en/0/0b/Eternal_Sunshine_of_the_Spotless_Mind_poster.jpg"}
+        {"title": "이터널 선샤인", "img": "https://i.namu.wiki/i/9es4tXG1Dh2SjMzjk0KWtxVSuGCMZa5uKPCLutgd7bLn_J1TmEMESD5RdQqsLUtjiUsU1cELe5LKbpZQE-BpEg.webp"}
     ],
     "ESTJ": [
         {"title": "인셉션", "img": "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg"},
