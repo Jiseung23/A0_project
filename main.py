@@ -20,7 +20,7 @@ mbti_reasons = {
 mbti_movies = {
     "INTP": [
         {"title": "굿 윌 헌팅", "img": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png"},
-        {"title": "엑스 마키나", "img": "https://upload.wikimedia.org/wikipedia/en/b/ba/Ex-machina-uk-poster.jpg"},
+        {"title": "엑스 마키나", "img": "https://i.namu.wiki/i/gp_84CU2vOQcnuSoNTZphSTBbNZK7vZPQGwaOKgS9Onj3Z_FPjd6Y5KexEFAedU4MwNVR2eKyiSlNKqFDRFe7g.webp"},
         {"title": "인터스텔라", "img": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"}
     ],
     "INFJ": [
