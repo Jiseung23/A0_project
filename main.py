@@ -29,14 +29,14 @@ mbti_movies = {
         {"title": "이터널 선샤인", "img": "https://i.namu.wiki/i/9es4tXG1Dh2SjMzjk0KWtxVSuGCMZa5uKPCLutgd7bLn_J1TmEMESD5RdQqsLUtjiUsU1cELe5LKbpZQE-BpEg.webp"}
     ],
     "ESTJ": [
-        {"title": "인셉션", "img": "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg"},
-        {"title": "소셜 네트워크", "img": "https://upload.wikimedia.org/wikipedia/en/7/7a/Social_network_film_poster.jpg"},
-        {"title": "굿 윌 헌팅", "img": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png"}
+        {"title": "인셉션", "img": "https://i.namu.wiki/i/O2uuv7bO0Hc33rLHS7t3OGhc5_guUiIyY6VThmyKSP8lC1kwtN6vS8KsiUIbda5n46DAVy7_Z2_c2KRR_mUYEw.webp"},
+        {"title": "소셜 네트워크", "img": "https://i.namu.wiki/i/VL7PFy33XiC2XYIlqKwF7O5Ftj_Hp6AxGA6WW652pyxYSB9bjNOEO1B4mfQKD00pFvhFlnUY2k3T2KRcra9c5g.webp"},
+        {"title": "굿 윌 헌팅", "img": "https://i.namu.wiki/i/a9JF44HxhY_5spS7W9KZmil4WTPJ1pUcYj3yQW4YXkj0eeqoPfkJZyduXDOZhfacUei8amB1zFA75gSIDzM8Jw.webp"}
     ],
     "ESFP": [
-        {"title": "옥자", "img": "https://upload.wikimedia.org/wikipedia/en/2/23/Okja_poster.jpg"},
-        {"title": "월터의 상상은 현실이 된다", "img": "https://upload.wikimedia.org/wikipedia/en/e/e7/The_Secret_Life_of_Walter_Mitty_poster.jpg"},
-        {"title": "월드워Z", "img": "https://upload.wikimedia.org/wikipedia/en/f/fb/World_War_Z_film_poster.jpg"}
+        {"title": "옥자", "img": "https://i.namu.wiki/i/5JAru7W0xhmR8FO3_2EbD8G0ZO2FFCFlH40kO8ikDkfJj8eEXQW0oAZnsIVrwnunISgTS2A-ddWz4dU-jTfwyQ.webp"},
+        {"title": "월터의 상상은 현실이 된다", "img": "https://i.namu.wiki/i/mxw5oOwRXHPADzoWNKJUALTiD7tSI32DEO4Jmj3fhATRYyh3SNqnh8Z_ObNaUkJjMiVaq5zolNFmjQIiHd0kWQ.webp"},
+        {"title": "월드워Z", "img": "https://i.namu.wiki/i/hoSMs-F6OgDLAIoI4yJk37Gz8r9TxvntEhaecQd5jl70mzHXG6V3q4rr8CnB9xVuytUaaksyFcoAlervQUz0dQ.webp"}
     ],
 }
 
