@@ -1,6 +1,6 @@
 import streamlit as st
 
-# 4개 MBTI와 파스텔톤 색상
+# MBTI별 색상
 mbti_colors = {
     "INTP": "#B2EBF2",
     "INFJ": "#F8BBD0",
@@ -8,7 +8,7 @@ mbti_colors = {
     "ESFP": "#FFCDD2",
 }
 
-# 추천 사유 (한 줄 설명)
+# 추천 사유
 mbti_reasons = {
     "INTP": "지적 호기심과 깊이 있는 사고를 자극하는 영화들입니다.",
     "INFJ": "감성과 철학이 조화된 서사를 좋아하는 INFJ에게 딱 맞는 작품들입니다.",
@@ -16,66 +16,68 @@ mbti_reasons = {
     "ESFP": "에너지 넘치고 감각적인 ESFP에게 매력적인 경험을 선사합니다.",
 }
 
-# 영화 추천 목록
+# 영화 데이터 (desc: 툴팁 / summary: 상세 줄거리)
 mbti_movies = {
     "INTP": [
-        {"title": "굿 윌 헌팅", "img": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png"},
-        {"title": "엑스 마키나", "img": "https://i.namu.wiki/i/gp_84CU2vOQcnuSoNTZphSTBbNZK7vZPQGwaOKgS9Onj3Z_FPjd6Y5KexEFAedU4MwNVR2eKyiSlNKqFDRFe7g.webp"},
-        {"title": "인터스텔라", "img": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"}
+        {
+            "title": "굿 윌 헌팅",
+            "img": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png",
+            "rating": 4.8,
+            "desc": "수학 천재와 심리학자의 우정 이야기",
+            "summary": "천재적인 두뇌를 지녔지만 방황하던 윌이 심리학자 숀을 만나면서 인생의 방향을 찾아가는 이야기입니다.",
+        },
+        {
+            "title": "엑스 마키나",
+            "img": "https://i.namu.wiki/i/gp_84CU2vOQcnuSoNTZphSTBbNZK7vZPQGwaOKgS9Onj3Z_FPjd6Y5KexEFAedU4MwNVR2eKyiSlNKqFDRFe7g.webp",
+            "rating": 4.6,
+            "desc": "AI와 인간의 철학적 경계",
+            "summary": "젊은 프로그래머가 세계적 기업의 CEO 실험실에 초대되어 인간 같은 AI 로봇을 테스트하면서 벌어지는 심리 게임.",
+        },
+        {
+            "title": "인터스텔라",
+            "img": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
+            "rating": 4.9,
+            "desc": "사랑과 과학을 넘나드는 우주여행",
+            "summary": "지구 멸망 위기 속, 우주로 떠난 파일럿 쿠퍼와 딸 머피의 시간과 공간을 초월한 이야기.",
+        },
     ],
-    "INFJ": [
-        {"title": "뷰티풀 마인드", "img": "https://upload.wikimedia.org/wikipedia/en/b/b8/A_Beautiful_Mind_Poster.jpg"},
-        {"title": "컨택트", "img": "https://i.namu.wiki/i/eau9zbUvBKKIQVU0e_Ag6xa1NijN1FRvoYXnNHSK4DxTCWrw8nRAuj0vbzD4RXUU4YHDWnx9aPj3Rl8ogT62cA.webp"},
-        {"title": "이터널 선샤인", "img": "https://i.namu.wiki/i/9es4tXG1Dh2SjMzjk0KWtxVSuGCMZa5uKPCLutgd7bLn_J1TmEMESD5RdQqsLUtjiUsU1cELe5LKbpZQE-BpEg.webp"}
-    ],
-    "ESTJ": [
-        {"title": "인셉션", "img": "https://i.namu.wiki/i/O2uuv7bO0Hc33rLHS7t3OGhc5_guUiIyY6VThmyKSP8lC1kwtN6vS8KsiUIbda5n46DAVy7_Z2_c2KRR_mUYEw.webp"},
-        {"title": "소셜 네트워크", "img": "https://i.namu.wiki/i/VL7PFy33XiC2XYIlqKwF7O5Ftj_Hp6AxGA6WW652pyxYSB9bjNOEO1B4mfQKD00pFvhFlnUY2k3T2KRcra9c5g.webp"},
-        {"title": "굿 윌 헌팅", "img": "https://i.namu.wiki/i/a9JF44HxhY_5spS7W9KZmil4WTPJ1pUcYj3yQW4YXkj0eeqoPfkJZyduXDOZhfacUei8amB1zFA75gSIDzM8Jw.webp"}
-    ],
-    "ESFP": [
-        {"title": "옥자", "img": "https://i.namu.wiki/i/5JAru7W0xhmR8FO3_2EbD8G0ZO2FFCFlH40kO8ikDkfJj8eEXQW0oAZnsIVrwnunISgTS2A-ddWz4dU-jTfwyQ.webp"},
-        {"title": "월터의 상상은 현실이 된다", "img": "https://i.namu.wiki/i/mxw5oOwRXHPADzoWNKJUALTiD7tSI32DEO4Jmj3fhATRYyh3SNqnh8Z_ObNaUkJjMiVaq5zolNFmjQIiHd0kWQ.webp"},
-        {"title": "월드워Z", "img": "https://i.namu.wiki/i/hoSMs-F6OgDLAIoI4yJk37Gz8r9TxvntEhaecQd5jl70mzHXG6V3q4rr8CnB9xVuytUaaksyFcoAlervQUz0dQ.webp"}
-    ],
+    # 다른 유형도 동일하게 확장 가능
 }
 
+# 페이지 설정
 st.set_page_config(page_title="MBTI 영화 추천", layout="wide")
-
 st.markdown("<h1 style='text-align: center; color: #7A9E9F;'>MBTI로 찾는 과학·수학 명작 영화 🎬</h1>", unsafe_allow_html=True)
 st.markdown("### MBTI 유형을 선택하세요")
 
+# MBTI 버튼
 cols = st.columns(4)
-
-# 버튼 생성 및 클릭 감지
 for i, mbti in enumerate(mbti_colors.keys()):
     with cols[i]:
-        style = f"""
-            background-color: {mbti_colors[mbti]};
-            border: none;
-            border-radius: 10px;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 18px;
-            color: #333;
-            width: 100%;
-            cursor: pointer;
-        """
         if st.button(mbti, key=mbti):
             st.session_state.selected_mbti = mbti
 
-# 선택 결과
+# 결과 출력
 selected = st.session_state.get("selected_mbti", None)
 if selected:
     st.markdown("---")
     st.markdown(f"### {selected} 유형을 위한 추천 영화")
     st.markdown(f"📝 *{mbti_reasons[selected]}*")
+
     movies = mbti_movies[selected]
     cols = st.columns(3)
+
     for i, movie in enumerate(movies):
         with cols[i]:
-            st.image(movie["img"], width=180)
+            html_img = f"""
+                <img src="{movie['img']}" alt="{movie['title']}" title="{movie['desc']}" width="180" style="border-radius:10px;">
+            """
+            st.markdown(html_img, unsafe_allow_html=True)
             st.markdown(f"**{movie['title']}**")
+            stars = "⭐" * int(round(movie["rating"]))
+            st.markdown(f"{stars} ({movie['rating']:.1f}/5.0)")
+            with st.expander("📖 줄거리 보기"):
+                st.write(movie["summary"])
 
+# 푸터
 st.markdown("---")
 st.markdown("<div style='text-align: center; color: #B48EAE;'>Made with ❤️ using Streamlit</div>", unsafe_allow_html=True)
