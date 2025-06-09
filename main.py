@@ -1,74 +1,72 @@
 import streamlit as st
 
-# MBTI별 색상 매핑
+# 4개 MBTI와 파스텔톤 색상
 mbti_colors = {
-    "INTP": "#B2EBF2", "INTJ": "#B2EBF2", "ENTP": "#B2EBF2", "ENTJ": "#B2EBF2",  # NT: 파랑
-    "INFP": "#F8BBD0", "INFJ": "#F8BBD0", "ENFP": "#F8BBD0", "ENFJ": "#F8BBD0",  # NF: 핑크
-    "ISTJ": "#FFF9C4", "ISFJ": "#FFF9C4", "ESTJ": "#FFF9C4", "ESFJ": "#FFF9C4",  # SJ: 노랑
-    "ISTP": "#C8E6C9", "ISFP": "#C8E6C9", "ESTP": "#C8E6C9", "ESFP": "#C8E6C9",  # SP: 그린
+    "INTP": "#B2EBF2",  # 파란 계열
+    "INFJ": "#F8BBD0",  # 분홍 계열
+    "ESTJ": "#FFF9C4",  # 노란 계열
+    "ESFP": "#FFCDD2",  # 연한 빨강 계열
 }
 
-# 배경 스타일
-st.markdown("""
-    <style>
-    body {
-        background-color: #FDF6EC;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# 제목
-st.markdown("<h1 style='text-align: center; color: #7A9E9F;'>🍿 MBTI로 찾는 과학·수학 명작 영화 🎬</h1>", unsafe_allow_html=True)
-st.write("")
-
-# 영화 추천 데이터 (생략된 예시, 전체 데이터는 앞 대화 참고)
+# 영화 추천 데이터 (간단하게 3개씩)
 mbti_movies = {
     "INTP": [
-        {"title": "《굿 윌 헌팅》", "img": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png"},
-        {"title": "《엑스 마키나》", "img": "https://upload.wikimedia.org/wikipedia/en/b/ba/Ex-machina-uk-poster.jpg"},
-        {"title": "《인터스텔라》", "img": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"}
+        {"title": "굿 윌 헌팅", "img": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png"},
+        {"title": "엑스 마키나", "img": "https://upload.wikimedia.org/wikipedia/en/b/ba/Ex-machina-uk-poster.jpg"},
+        {"title": "인터스텔라", "img": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"}
     ],
-    # ... 모든 16유형 포함 (이전 답변 참고)
+    "INFJ": [
+        {"title": "뷰티풀 마인드", "img": "https://upload.wikimedia.org/wikipedia/en/b/b8/A_Beautiful_Mind_Poster.jpg"},
+        {"title": "컨택트", "img": "https://upload.wikimedia.org/wikipedia/en/d/dc/Arrival%2C_2016_film_poster.jpg"},
+        {"title": "이터널 선샤인", "img": "https://upload.wikimedia.org/wikipedia/en/0/0b/Eternal_Sunshine_of_the_Spotless_Mind_poster.jpg"}
+    ],
+    "ESTJ": [
+        {"title": "인셉션", "img": "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg"},
+        {"title": "소셜 네트워크", "img": "https://upload.wikimedia.org/wikipedia/en/7/7a/Social_network_film_poster.jpg"},
+        {"title": "굿 윌 헌팅", "img": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png"}
+    ],
+    "ESFP": [
+        {"title": "옥자", "img": "https://upload.wikimedia.org/wikipedia/en/2/23/Okja_poster.jpg"},
+        {"title": "월터의 상상은 현실이 된다", "img": "https://upload.wikimedia.org/wikipedia/en/e/e7/The_Secret_Life_of_Walter_Mitty_poster.jpg"},
+        {"title": "월드워Z", "img": "https://upload.wikimedia.org/wikipedia/en/f/fb/World_War_Z_film_poster.jpg"}
+    ],
 }
 
-mbti_list = list(mbti_movies.keys())
-selected_mbti = st.session_state.get("selected_mbti", "")
+st.set_page_config(page_title="MBTI 영화 추천", layout="wide")
 
-# 🔘 유형 버튼 표시
-st.markdown("### 🧠 MBTI 유형 선택")
+st.markdown("<h1 style='text-align: center; color: #7A9E9F;'>MBTI로 찾는 과학·수학 명작 영화 🎬</h1>", unsafe_allow_html=True)
+st.markdown("### MBTI 유형을 선택하세요")
 
-button_cols = st.columns(4)
-for i, mbti in enumerate(mbti_list):
-    with button_cols[i % 4]:
-        button_style = f"""
-            <style>
-            div[data-testid="stButton"] > button {{
-                background-color: {mbti_colors[mbti]};
-                border-radius: 12px;
-                border: 2px solid #ccc;
-                padding: 0.5em 1em;
-                margin: 0.2em 0;
-                width: 100%;
-                font-weight: bold;
-            }}
-            </style>
+cols = st.columns(4)
+
+# 클릭 시 세션 상태에 저장하도록 버튼 만들기 (버튼마다 고유 key 필수!)
+for i, mbti in enumerate(mbti_colors.keys()):
+    with cols[i]:
+        style = f"""
+            background-color: {mbti_colors[mbti]};
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            width: 100%;
+            cursor: pointer;
         """
-        st.markdown(button_style, unsafe_allow_html=True)
         if st.button(mbti, key=mbti):
             st.session_state.selected_mbti = mbti
-            selected_mbti = mbti
 
-# 🎬 결과 출력
-if selected_mbti:
+# 선택된 MBTI 영화 추천 보여주기
+selected = st.session_state.get("selected_mbti", None)
+if selected:
     st.markdown("---")
-    st.markdown(f"### 🎯 {selected_mbti} 유형에게 추천하는 영화")
-
-    movie_data = mbti_movies[selected_mbti]
+    st.markdown(f"### {selected} 유형을 위한 추천 영화")
+    movies = mbti_movies[selected]
     cols = st.columns(3)
-    for i, movie in enumerate(movie_data):
+    for i, movie in enumerate(movies):
         with cols[i]:
             st.image(movie["img"], width=180)
-            st.markdown(f"**🎬 {movie['title']}**")
+            st.markdown(f"**{movie['title']}**")
 
 # 푸터
 st.markdown("---")
